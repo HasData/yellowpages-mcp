@@ -167,6 +167,11 @@ A prompt that names a niche and a city goes to the search tool. Reading services
 
 ## Tools
 
+| Tool | Credits | What it returns |
+| :--- | :--- | :--- |
+| `hasdata_yellowpages_place_getPlaceDetails` | 10 | Scrapes a single YellowPages business listing URL and returns business name, full address, phone, website, categories, years in business, hours of operation, ratings,… |
+| `hasdata_yellowpages_search_getSearchResults` | 10 | Each business with name, listing URL, phone, address, categories, rating, review count, and years in business |
+
 Two tools, 10 credits per successful call.
 
 ### Get Yellow Pages search results
