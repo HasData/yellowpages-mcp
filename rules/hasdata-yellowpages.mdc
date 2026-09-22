@@ -1,0 +1,36 @@
+---
+description: How to pull YellowPages business listings and place details through the HasData MCP server
+alwaysApply: false
+---
+
+# YellowPages through HasData
+
+Two tools. `hasdata_yellowpages_search_getSearchResults` needs `keyword` and `location` and returns about thirty businesses a page. `hasdata_yellowpages_place_getPlaceDetails` opens one of them by its `url`.
+
+`sort` takes `default`, `distance`, `averageRating` or `name`. `domain` takes the literal hostnames `www.yellowpages.com` or `www.yellowpages.ca`, so a country code is a rejected call.
+
+## The page is not the market
+
+`searchInformation.totalResults` reports what the search actually found, and it runs far ahead of the thirty rows in front of you. Quote it alongside the page count, because reporting the page as the market understates it by an order of magnitude.
+
+## Ratings are the sparse field
+
+A row reliably carries `title`, `url`, `phone`, `categories`, `country` and `position`. The address parts, `workingHours`, `openState` and `website` are there on most rows.
+
+`rating` and `reviews` sit on a minority of listings, so a shortlist ranked by rating silently drops most of the page. Rank on what is present, say how many rows carried a rating, and treat an unrated business as unrated rather than as poor. `reviewText` carries a review snippet on some rows, which answers a quality question without opening anything, and `badges` marks the rest.
+
+## The detail call is grouped, and it loses fields
+
+The place tool answers with `overview`, `ratings`, `details`, `reviews` and `images` rather than one flat object.
+
+`overview` holds the title, url, phone, website, city, region, zipcode, country and breadcrumbs. It has no street line and no `workingHours`, both of which the search row already gave you, so carry those forward rather than expecting the detail call to repeat them.
+
+Reviews carry `author`, `authorUrl`, `text`, `helpfulCount`, a `date` and a `ratings` object holding `overall` plus sometimes `expertise`, `professionalism` and `promptness`.
+
+Review dates are written year, day, month, so `2019-24-07` is July 2019. Reading them as ISO produces impossible months and a nonsense ordering, so use the feed's own order for recency unless you parse them deliberately.
+
+## Paging
+
+The request takes `page` as a number. The response reports where you are under `pagination` with `currentPage`, `perPage`, `totalPages`, `nextPageUrl` and `otherPageUrls`, so those URLs are for reading rather than values to send back. Take the next page by incrementing `page`.
+
+Each successful call spends credits, and opening a business is a call of its own, so open the shortlist rather than the page.
