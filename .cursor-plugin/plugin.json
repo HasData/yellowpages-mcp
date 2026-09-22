@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hasdata-yellowpages-mcp",
+  "version": "1.0.0",
+  "description": "Yellow Pages MCP server for Cursor. Local business search by category and location, and full listings with services, brands and payment methods, as structured JSON. Remote MCP server hosted by HasData, connects over streamable HTTP with your HasData API key.",
+  "author": {
+    "name": "HasData",
+    "url": "https://hasdata.com"
+  },
+  "homepage": "https://hasdata.com/apis/yellow-pages-api",
+  "repository": "https://github.com/HasData/yellowpages-mcp",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "yellowpages",
+    "yellowpages-mcp",
+    "local-business",
+    "lead-generation",
+    "local-seo",
+    "model-context-protocol",
+    "hasdata",
+    "scraper"
+  ],
+  "logo": "https://hasdata.com/favicon.svg"
+}
