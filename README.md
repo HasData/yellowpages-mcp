@@ -16,6 +16,7 @@ https://mcp.hasdata.com/mcp?apis=yellowpages
 [![tool contract](https://github.com/HasData/yellowpages-mcp/actions/workflows/contract.yml/badge.svg)](https://github.com/HasData/yellowpages-mcp/actions/workflows/contract.yml)
 [![MCP](https://img.shields.io/badge/MCP-remote%20%7C%20streamable%20HTTP-6366f1?style=flat-square)](https://mcp.hasdata.com/mcp?apis=yellowpages)
 [![Tools](https://img.shields.io/badge/tools-2-10b981?style=flat-square)](#tools)
+- [Prompts and resources](#prompts-and-resources)
 [![npm](https://img.shields.io/npm/v/@hasdata/yellowpages-mcp?style=flat-square&logo=npm&label=npm&color=cb3837)](https://www.npmjs.com/package/@hasdata/yellowpages-mcp)
 [![PyPI](https://img.shields.io/pypi/v/hasdata-yellowpages-mcp?style=flat-square&logo=pypi&logoColor=white&label=PyPI&color=3775a9)](https://pypi.org/project/hasdata-yellowpages-mcp/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
@@ -254,6 +255,17 @@ The `details` block is where the enrichment value sits, and it arrives as comma-
   "images": ["https://i4.ypcdn.com/blob/ce73451958465ab47dd7be41922973a98bc847af_640.jpg"]
 }
 ```
+
+## Prompts and resources
+
+The server exposes 2 resources, one per parameter whose accepted values are a fixed list. Reading one is cheaper than learning the vocabulary from a rejected call, and it costs no credits. Each URI is `hasdata://yellowpages/<parameter>`.
+
+| Parameter | Values | What it selects |
+| --- | ---: | --- |
+| `sort` | 4 | The sorting option for the search results. |
+| `domain` | 2 | YellowPages domain to use. Default is `www.yellowpages.com`. |
+
+The list is served without an API key, so a client can read it before a user has signed up.
 
 ## Errors and failure paths
 
