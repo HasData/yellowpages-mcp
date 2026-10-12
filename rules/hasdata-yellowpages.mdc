@@ -34,3 +34,7 @@ Review dates are written year, day, month, so `2019-24-07` is July 2019. Reading
 The request takes `page` as a number. The response reports where you are under `pagination` with `currentPage`, `perPage`, `totalPages`, `nextPageUrl` and `otherPageUrls`, so those URLs are for reading rather than values to send back. Take the next page by incrementing `page`.
 
 Each successful call spends credits, and opening a business is a call of its own, so open the shortlist rather than the page.
+
+## Prompts and resources
+
+The server also serves resources that spell out the accepted values of every parameter that takes a fixed list, each one at `hasdata://yellowpages/<parameter>`. Reading one spends no credits and makes no upstream request, which beats discovering the vocabulary from a rejected call. Listing them needs no API key either, so a client can read them before the user has connected an account.
